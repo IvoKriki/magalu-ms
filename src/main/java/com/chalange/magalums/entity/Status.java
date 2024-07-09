@@ -32,8 +32,8 @@ public class Status {
             this.description = description;
         }
 
-        public Channel toChannel(){
-            return new Channel(id, description);
+        public Status toStatus(){
+            return new Status(id, description);
         }
 
     }
