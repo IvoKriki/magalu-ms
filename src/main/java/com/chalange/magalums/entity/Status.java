@@ -7,16 +7,21 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
+@Entity
 @Table(name = "tb_status")
 public class Status {
 
     @Id
     private Long statusId;
     private String description;
+
+    public Status() {}
+
+    public Status(Long statusId, String description) {
+        this.statusId = statusId;
+        this.description = description;
+    }
 
     public enum Values {
         PENDING(1L, "pending"),

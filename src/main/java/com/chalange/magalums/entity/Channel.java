@@ -4,17 +4,24 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Data
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
 @Table(name = "tb_channel")
 public class Channel {
 
     @Id
     private Long channelId;
     private String description;
+
+    public Channel (){}
+
+    public Channel(Long channelId, String description) {
+        this.channelId = channelId;
+        this.description = description;
+    }
 
     public enum Values{
         EMAIL(1L, "email"),

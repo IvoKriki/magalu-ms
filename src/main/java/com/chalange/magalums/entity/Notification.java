@@ -7,9 +7,8 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-@Entity
 @Data
-@NoArgsConstructor
+@Entity
 @Table(name = "tb_notifications")
 public class Notification {
 
@@ -19,9 +18,6 @@ public class Notification {
     private LocalDateTime dateTime;
     private String destination;
     private String message;
-    public Notification(LocalDateTime dateTime, String destination, String message, Channel channel, Status status) {
-    }
-
     @ManyToOne
     @JoinColumn(name = "channel_id")
     private Channel channel;
@@ -29,4 +25,13 @@ public class Notification {
     @JoinColumn(name = "status_id")
     private Status status;
 
+    public Notification() {
+    }
+    public Notification(LocalDateTime dateTime, String destination, String message, Channel channel, Status status) {
+        this.dateTime = dateTime;
+        this.destination = destination;
+        this.message = message;
+        this.channel = channel;
+        this.status = status;
+    }
 }

@@ -11,12 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@NoArgsConstructor
 @AllArgsConstructor
 @RequestMapping("/notifications")
 public class NotificationController {
 
-    private NotificationService notificationService;
+    private final NotificationService notificationService;
 
     @PostMapping
     public ResponseEntity<Void> scheduleNotification(@RequestBody SchedulerNotificationDto dto){
