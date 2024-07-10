@@ -19,6 +19,8 @@ public class Notification {
     private LocalDateTime dateTime;
     private String destination;
     private String message;
+    public Notification(LocalDateTime dateTime, String destination, String message, Channel channel, Status status) {
+    }
 
     @ManyToOne
     @JoinColumn(name = "channel_id")
