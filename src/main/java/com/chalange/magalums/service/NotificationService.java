@@ -2,6 +2,7 @@ package com.chalange.magalums.service;
 
 import com.chalange.magalums.dto.SchedulerNotificationDto;
 import com.chalange.magalums.entity.Notification;
+import com.chalange.magalums.entity.Status;
 import com.chalange.magalums.repository.NotificationRepository;
 import lombok.AllArgsConstructor;
 import org.aspectj.apache.bcel.classfile.Module;
@@ -25,6 +26,16 @@ public class NotificationService {
 
     public Optional<Notification> findById(Long notificationId){
         return notificationRepository.findById(notificationId);
+    }
+
+    public void cancelNotification(Long notificationId){
+        var notification = findById(notificationId);
+
+        if (notification.isPresent()){
+            notification.get().setStatus(Status.Values.CANCELLED.toStatus());
+            notificationRepository.save(notification.get());
+
+        }
     }
 
 }
